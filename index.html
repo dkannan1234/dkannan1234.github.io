@@ -1,1 +1,132 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Deepika Kannan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── heart frame (overrides .photo-frame from styles.css) ── */
+    .photo-frame {
+      position: relative;
+      margin-bottom: 2.2rem;
+      animation: fadeUp 0.9s ease both;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* remove the old spinning ring */
+    .photo-frame::before,
+    .photo-frame::after {
+      display: none;
+    }
+
+    .photo-frame img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--pink-light);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* SVG heart sits behind the photo, pulses softly */
+    .heart-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      animation: heartPulse 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes heartPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.55; }
+      50%       { transform: translate(-50%, -50%) scale(1.1); opacity: 0.85; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating decorations -->
+  <span class="sparkle">✦</span>
+  <span class="sparkle">♡</span>
+  <span class="sparkle">✿</span>
+  <span class="sparkle">✦</span>
+  <span class="sparkle">❋</span>
+  <span class="sparkle">♡</span>
+  <span class="sparkle">✦</span>
+  <span class="sparkle">✿</span>
+
+  <header>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="work.html">Work</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="home-main">
+    <div class="photo-frame">
+      <!-- soft blurred heart behind the photo -->
+      <svg class="heart-bg" width="280" height="260" viewBox="0 0 280 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="heartBlur" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="14" result="blur"/>
+          </filter>
+          <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#f5ccd8"/>
+            <stop offset="100%" stop-color="#e8a4b8"/>
+          </linearGradient>
+        </defs>
+        <path
+          d="M140 230 C140 230 20 160 20 90 C20 50 50 20 90 20 C112 20 132 32 140 50 C148 32 168 20 190 20 C230 20 260 50 260 90 C260 160 140 230 140 230Z"
+          fill="url(#heartGrad)"
+          filter="url(#heartBlur)"
+        />
+      </svg>
+
+      <img
+        src="assets/headshot.jpeg"
+        alt="Portrait of Deepika Kannan"
+      />
+    </div>
+
+    <div class="intro">
+      <span class="tag">✦ hey there ✦</span>
+      <h1>i'm <em>deepika kannan.</em></h1>
+      <p class="cares">
+        I'm a senior at the University of Pennsylvania double majoring in Urban Studies and Computer Science.
+      </p>
+      <p class="cares">
+        I'm passionate about creating more community-oriented cities and technologies.
+      </p>
+      <div class="divider-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="cta-wrap">
+      <a href="work.html" class="btn btn-primary">
+        see my work <span class="arrow">→</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> deepika kannan &nbsp;✦&nbsp; made with ♡</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

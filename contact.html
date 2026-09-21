@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Deepika Kannan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    .contact-page-header {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 2.5rem 2rem 0.5rem;
+    }
+
+    .contact-page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-page-header h1 em {
+      font-style: italic;
+      color: var(--pink-deep);
+    }
+
+    .contact-page-header p {
+      font-size: 0.9rem;
+      color: var(--brown-light);
+      line-height: 1.7;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    /* ── main layout: two columns on wider screens ── */
+    .contact-body {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 820px;
+      margin: 2.5rem auto 5rem;
+      padding: 0 2rem;
+      align-items: start;
+    }
+
+    /* ── left: links list ── */
+    .contact-links-col h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .contact-links-col h2 em {
+      font-style: italic;
+      color: var(--pink-deep);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.3rem;
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-link:hover {
+      background: var(--pink-light);
+      border-color: var(--pink);
+      transform: translateX(5px);
+      box-shadow: 0 4px 18px rgba(201,122,150,0.13);
+    }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      background: var(--beige-dark);
+      transition: background 0.2s;
+    }
+
+    .contact-link:hover .contact-icon {
+      background: var(--pink);
+    }
+
+    .contact-text {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown);
+      display: block;
+      margin-bottom: 0.1rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover .contact-label {
+      color: var(--pink-deep);
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    .contact-arrow {
+      font-size: 0.9rem;
+      color: var(--brown-light);
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .contact-link:hover .contact-arrow {
+      transform: translateX(3px);
+      color: var(--pink-deep);
+    }
+
+    /* ── right: note card ── */
+    .contact-note-col {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .contact-note {
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-radius: 20px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* soft pink blob in corner of card */
+    .contact-note::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,204,216,0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .note-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--pink-deep);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .contact-note p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .contact-note p:last-of-type {
+      margin-bottom: 1.4rem;
+    }
+
+    .note-sign {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--pink-deep);
+    }
+
+    .note-divider {
+      border: none;
+      border-top: 1px solid var(--beige-mid);
+      margin: 1.2rem 0;
+    }
+
+    .note-availability {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--brown-light);
+      letter-spacing: 0.04em;
+    }
+
+    .availability-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7bc99a;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(123,201,154,0.5);
+      animation: ping 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes ping {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(123,201,154,0.5); }
+      50%       { box-shadow: 0 0 0 5px rgba(123,201,154,0); }
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 620px) {
+      .contact-body {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1.2rem;
+        margin-top: 1.8rem;
+      }
+
+      .contact-note-col {
+        position: static;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <span class="sparkle">✦</span>
+  <span class="sparkle">♡</span>
+  <span class="sparkle">✿</span>
+  <span class="sparkle">✦</span>
+  <span class="sparkle">❋</span>
+  <span class="sparkle">♡</span>
+  <span class="sparkle">✦</span>
+  <span class="sparkle">✿</span>
+
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <div class="contact-page-header">
+    <h1>say <em>hello.</em></h1>
+    <p>i'd love to hear from you — whether it's about a project, opportunity, or just to connect.</p>
+    <div class="divider-dots" style="margin-top:1rem;">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="contact-body">
+
+    <!-- left: contact links -->
+    <div class="contact-links-col">
+      <h2>find me <em>here</em></h2>
+      <div class="contact-links">
+
+        <!-- Email — update href -->
+        <a class="contact-link" href="mailto:dkannan@sas.upenn.edu">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-text">
+            <span class="contact-label">email</span>
+            <span class="contact-value">dkannan@sas.upenn.edu</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+
+        <!-- LinkedIn — update href -->
+        <a class="contact-link" href="https://linkedin.com/in/deepikakannan1" target="_blank" rel="noopener">
+          <div class="contact-icon">💼</div>
+          <div class="contact-text">
+            <span class="contact-label">linkedin</span>
+            <span class="contact-value">linkedin.com/in/yourhandle</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- right: personal note card -->
+    <div class="contact-note-col">
+      <div class="contact-note">
+        <span class="note-tag">✦ a note from me</span>
+        <p>
+          I'm currently a senior at Penn finishing up my degrees in Urban Studies and Computer Science. 
+        <p>
+          I'm basically interested in anything in this list: 
+          <ul>
+        <li>♡ hi </li>
+        ♡ bye
+          </ul>
+        </p>
+        <p>
+          My inbox is always open. Don't be shy!
+        </p>
+        <span class="note-sign">— deepika ♡</span>
+        <hr class="note-divider">
+        <div class="note-availability">
+          <span class="availability-dot"></span>
+          open to opportunities · responding within a few days
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> deepika kannan &nbsp;✦&nbsp; made with ♡</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
