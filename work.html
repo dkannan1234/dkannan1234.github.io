@@ -8,833 +8,235 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-
-    /* ── page header ── */
-    .work-page-header {
-      position: relative;
-      z-index: 5;
-      text-align: center;
-      padding: 2.5rem 2rem 1rem;
-    }
-
-    .work-page-header h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-    }
-
-    .work-page-header h1 em {
-      font-style: italic;
-      color: var(--pink-deep);
-    }
-
-    .work-page-header p {
-      font-size: 0.92rem;
-      color: var(--brown-light);
-      margin-bottom: 0;
-    }
-
-    /* ── tag filter bar ── */
-    .filter-bar {
-      position: relative;
-      z-index: 5;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1.2rem 2rem 2rem;
-    }
-
-    .filter-btn {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--brown);
-      background: var(--white);
-      border: 1.5px solid var(--beige-mid);
-      border-radius: 20px;
-      padding: 0.35rem 1rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn:hover {
-      border-color: var(--pink);
-      color: var(--pink-deep);
-      background: var(--pink-light);
-    }
-
-    .filter-btn.active {
-      background: var(--pink-deep);
-      border-color: var(--pink-deep);
-      color: var(--white);
-    }
-
-    /* ── masonry grid ── */
-    .work-grid {
-      position: relative;
-      z-index: 5;
-      columns: 3;
-      column-gap: 1.1rem;
-      padding: 0 2rem 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .work-card {
-      break-inside: avoid;
-      margin-bottom: 1.1rem;
-      background: var(--white);
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--beige-mid);
-      transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
-      animation: fadeUp 0.5s ease both;
-      cursor: pointer;
-    }
-
-    .work-card:hover {
-      transform: translateY(-5px) scale(1.01);
-      box-shadow: 0 14px 40px rgba(122,92,79,0.13);
-    }
-
-    .work-card.hidden {
-      display: none;
-    }
-
-    .work-card-thumb {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      background: linear-gradient(135deg, var(--pink-light), var(--beige-dark));
-    }
-
-    /* color-coded placeholder thumbs per tag */
-    .work-card-thumb.placeholder-urban   { background: linear-gradient(135deg, #f5ccd8, #ede3d5); }
-    .work-card-thumb.placeholder-tech    { background: linear-gradient(135deg, #d8e8f5, #e8dece); }
-    .work-card-thumb.placeholder-research{ background: linear-gradient(135deg, #f5e6cc, #ede3d5); }
-    .work-card-thumb.placeholder-pm      { background: linear-gradient(135deg, #d8f5e0, #e8dece); }
-
-    .work-card-body {
-      padding: 1rem 1.2rem 1.2rem;
-    }
-
-    .work-card-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.35rem;
-      line-height: 1.3;
-    }
-
-    .work-card-teaser {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      line-height: 1.55;
-      margin-bottom: 0.8rem;
-    }
-
-    .work-card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .work-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--pink-deep);
-      background: var(--pink-light);
-      border: 1px solid var(--pink);
-      border-radius: 20px;
-      padding: 0.18rem 0.65rem;
-    }
-
-    .btn-show-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--pink-deep);
-      background: transparent;
-      border: 1.5px solid var(--pink);
-      border-radius: 20px;
-      padding: 0.35rem 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-show-more:hover {
-      background: var(--pink-light);
-      border-color: var(--pink-deep);
-    }
-
-
-    /* ══════════════════════════════════════════
-       MODAL OVERLAY
-    ══════════════════════════════════════════ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(61,43,37,0.45);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal {
-      background: var(--beige);
-      border-radius: 24px;
-      width: min(780px, 95vw);
-      max-height: 88vh;
-      overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(61,43,37,0.22);
-      transform: translateY(30px) scale(0.97);
-      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
-      scrollbar-width: thin;
-      scrollbar-color: var(--pink) transparent;
-      position: relative;
-    }
-
-    .modal-overlay.open .modal {
-      transform: translateY(0) scale(1);
-    }
-
-    .modal-close {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: flex-end;
-      padding: 1rem 1.2rem 0;
-      background: var(--beige);
-    }
-
-    .modal-close-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1.5px solid var(--beige-mid);
-      background: var(--white);
-      color: var(--brown);
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .modal-close-btn:hover {
-      background: var(--pink-light);
-      border-color: var(--pink);
-      color: var(--pink-deep);
-    }
-
-    .modal-content {
-      padding: 0.5rem 2rem 2.5rem;
-    }
-
-    .modal-header {
-      margin-bottom: 1.2rem;
-    }
-
-    .modal-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-title em {
-      font-style: italic;
-      color: var(--pink-deep);
-    }
-
-    .modal-subtitle {
-      font-size: 0.85rem;
-      color: var(--brown-light);
-      letter-spacing: 0.04em;
-    }
-
-    .modal-divider {
-      border: none;
-      border-top: 1px solid var(--beige-mid);
-      margin: 1.2rem 0;
-    }
-
-    .modal-desc {
-      font-size: 0.93rem;
-      color: var(--text-light);
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-
-    /* media blocks inside modal */
-    .modal-section-label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--pink-deep);
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .modal-section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--beige-mid);
-    }
-
-    .modal-video {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--beige-dark);
-      margin-bottom: 1.4rem;
-    }
-
-    .modal-video iframe,
-    .modal-video video {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    .modal-pdf {
-      width: 100%;
-      height: 480px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--beige-mid);
-      margin-bottom: 1.4rem;
-    }
-
-    .modal-pdf iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .modal-photos {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 0.7rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .modal-photos img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      border-radius: 10px;
-      background: var(--beige-dark);
-    }
-
-    .modal-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .modal-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      color: var(--pink-deep);
-      background: var(--pink-light);
-      border: 1px solid var(--pink);
-      border-radius: 20px;
-      padding: 0.4rem 1rem;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .modal-link:hover {
-      background: var(--pink);
-      border-color: var(--pink-deep);
-      color: var(--white);
-    }
-
-
-    /* ── responsive ── */
-    @media (max-width: 768px) {
-      .work-grid { columns: 2; padding: 0 1.2rem 3rem; }
-    }
-
-    @media (max-width: 480px) {
-      .work-grid { columns: 1; }
-      .modal-content { padding: 0.5rem 1.2rem 2rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="board.css">
+  <script src="board.js" defer></script>
 </head>
-<body>
-
-  <span class="sparkle">✦</span>
-  <span class="sparkle">♡</span>
-  <span class="sparkle">✿</span>
-  <span class="sparkle">✦</span>
-  <span class="sparkle">❋</span>
-  <span class="sparkle">♡</span>
-  <span class="sparkle">✦</span>
-  <span class="sparkle">✿</span>
-
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="work.html" class="active">Work</a>
-      <a href="resume.html">Resume</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <div class="work-page-header">
-    <h1>my <em>work.</em></h1>
-    <p>projects, research, performances, and things i've built!</p>
-    <div class="divider-dots" style="margin-top:1rem;">
-      <span></span><span></span><span></span>
+<body class="board-page">
+  <span class="sparkle" aria-hidden="true">✦</span><span class="sparkle" aria-hidden="true">♡</span>
+  <header><nav aria-label="Main navigation">
+    <a href="index.html">Home</a><a href="work.html" class="active" aria-current="page">Work</a><a href="resume.html">Resume</a><a href="contact.html">Contact</a>
+  </nav></header>
+  <main>
+    <div class="board-intro">
+      <span class="tag">Software. Research. Art.</span>
+      <h1>What I’ve Been <em>Working On.</em></h1>
+      <p>I build software and study how technology shapes people's lives—grounded in research, community, and creative practice.</p>
+      <p class="board-note">A collection of things I've built, questions I've explored, and people I've brought together.</p>
     </div>
-  </div>
-
-  <!-- Tag filter bar -->
-  <div class="filter-bar" role="group" aria-label="Filter projects by tag">
-    <button class="filter-btn active" data-filter="all">✦ all</button>
-    <button class="filter-btn" data-filter="urban-studies">urban studies</button>
-    <button class="filter-btn" data-filter="technology">technology</button>
-    <button class="filter-btn" data-filter="research">research</button>
-    <button class="filter-btn" data-filter="project-management">project management</button>
-    <button class="filter-btn" data-filter="design">design</button>
-  </div>
-
-  <!-- Pinterest grid -->
-  <div class="work-grid" id="work-grid">
-
-    <!-- ── CARD 1 ── -->
-    <div class="work-card" data-tags="urban-studies,research" data-modal="modal-1">
-      <img class="work-card-thumb" src="assets/thesis-cover.jpg" alt="Nobody Moves thesis">
-      <div class="work-card-body">
-        <div class="work-card-tags">
-          <span class="work-tag">Urban Studies</span>
-          <span class="work-tag">Research</span>
-          <span class="work-tag">Technology</span>
-        </div>
-        <h2 class="work-card-title">Nobody Moves: The Impact of Rideshare Platforms on Bengaluru's Urban Landscape</h2>
-        <p class="work-card-teaser">Supported by Penn Urban Studies Hassenfeld Grant, my senior thesis conducts fieldwork in Bengaluru, India by interviewing riders and drivers using popular apps like Uber and Ola.
-            It concludes that rideshare platforms contribue to traffic congestion, create deeper class division in transportation experiences, and enhance driver labor precarity. 
-        </p>
-        <button class="btn-show-more" data-modal="modal-1">show more ↗</button>
+    <div class="board-controls" hidden>
+      <div class="board-filters" role="group" aria-label="Filter experiences">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="software" aria-pressed="false">Software</button>
+        <button type="button" data-filter="data" aria-pressed="false">Data</button>
+        <button type="button" data-filter="research" aria-pressed="false">Research</button>
+        <button type="button" data-filter="community" aria-pressed="false">Community</button>
+        <button type="button" data-filter="creative" aria-pressed="false">Creative</button>
       </div>
+      <p id="board-count" role="status" aria-live="polite" aria-atomic="true"></p>
     </div>
-    <!-- ── CARD 2 ── -->
-    <div class="work-card" data-tags="technology,project-management" data-modal="modal-2">
-    <img class="work-card-thumb" src="assets/ghs.png" alt="GetHomeSafe">
-    <div class="work-card-body">
-        <div class="work-card-tags">
-        <span class="work-tag">Technology</span>
-        <span class="work-tag">Design</span>
+    <div class="experience-board">
+      <article class="experience-card" id="thesis" data-tags="research community">
+        <img class="experience-image" src="assets/thesis-cover.jpg" alt="Cover of the Nobody Moves rideshare thesis" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Research</li><li>Community</li></ul>
+          <h2>Published Senior Thesis: Impact of Rideshare Platforms on Social Hierarchies in Bengaluru</h2>
+          <p class="experience-role">Published research · Penn Urban Studies</p>
+          <p>Investigating how rideshare platforms shape social hierarchies, transportation inequality, and driver labor in Bengaluru. Published in the Spring 2026 Barnard-Columbia Urban Review, page 53.</p>
+          <details><summary>Read the story<span class="sr-only">: Published Senior Thesis: Impact of Rideshare Platforms on Social Hierarchies in Bengaluru</span></summary><div class="experience-detail"><p>Selected through a highly competitive research grant process, I received a $3,500 Hassenfeld Grant to support my senior thesis. I conducted fieldwork with drivers, riders, and experts in Bengaluru and analyzed interviews using NVivo. The thesis examines class differences in transportation, congestion, and labor precarity. The full paper and presentation are available below.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Field interviews · NVivo · Qualitative analysis</p><div class="experience-links"><a href="https://www.bcurbanreview.com/spring-2026-journal">Read the published paper (page 53) <span aria-hidden="true">↗</span></a><a href="assets/Nobody Moves_ Rideshare Apps in Bengaluru.pdf">Read thesis (PDF) <span aria-hidden="true">↗</span></a><a href="assets/URBS presentation.pdf">View slides (PDF) <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
-        <h2 class="work-card-title">GetHomeSafe</h2>
-        <p class="work-card-teaser">GetHomeSafe is a platform to help women find buddies to walk home with at night. I collaborated with two peers 
-            to have complex UI, verification systems, Google Maps-connected GPS systems, and live pairing. </p>
-        <button class="btn-show-more" data-modal="modal-2">show more ↗</button>
+      </article>
+      <article class="experience-card" id="pwc" data-tags="software">
+        <img class="experience-image experience-logo" src="assets/projects/pwc/logo.png" alt="PwC logo" width="638" height="480" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Software</li></ul>
+          <h2>HR Technology Transformation &amp; Change Management</h2>
+          <p class="experience-role">Technology consulting intern · PwC · 2025</p>
+          <p>Supporting an SAP SuccessFactors implementation through HR change management, PMO tools, and coordination across teams.</p>
+          <details><summary>Read the story<span class="sr-only">: HR Technology Transformation &amp; Change Management</span></summary><div class="experience-detail"><p>I contributed to an SAP SuccessFactors implementation for a media client, supporting the transition to a new HR platform. My project management office (PMO) work included preparing executive status updates and action trackers, tracking delivery, and coordinating deliverables across teams. I also arranged translated meetings for Japanese and English speakers.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>SAP SuccessFactors · Jira · Excel · SharePoint · PMO tools · Change management</p></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="gethomesafe" data-tags="software community">
+        <img class="experience-image" src="assets/ghs.png" alt="GetHomeSafe project screenshot" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Software</li><li>Community</li></ul>
+          <h2>GetHomeSafe</h2>
+          <p class="experience-role">Programmer · Human Computer Interaction</p>
+          <p>A platform that helps women find someone to walk home with, connecting interface design with everyday safety.</p>
+          <details><summary>Read the story<span class="sr-only">: GetHomeSafe</span></summary><div class="experience-detail"><p>Collaborating with two classmates, I implemented the Google Maps API integration and a matching algorithm for live pairing. The team prototyped the experience in Figma.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Google Maps API · Figma</p><div class="experience-links"><a href="https://www.youtube.com/watch?v=xEIEMdesdaM">Watch demo <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="nutrimap" data-tags="software data">
+        <img class="nutrimap-image" src="assets/projects/nutrimap/pitch-deck-cover.png" alt="NutriMap CIS 4500 pitch deck cover with an illustrated bag of vegetables" width="2222" height="1242" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Software</li><li>Data</li></ul>
+          <h2>NutriMap</h2>
+          <p class="experience-role">CIS 4500 · Team course project</p>
+          <p>Explore the nutritional landscape of US restaurants through interactive maps, cuisine comparisons, and nutrition filters.</p>
+          <details><summary>Read the story<span class="sr-only">: NutriMap</span></summary><div class="experience-detail"><p>Built on the Yelp Open Dataset and Food.com recipe dataset. The dashboard includes restaurant details, macro comparisons, healthy picks, and neighborhood-level trends.</p><p><strong>Database design &amp; organization:</strong> I organized a large dataset and created an entity relationship diagram (ERD) to document its structure and the relationships between entities.</p><p><strong>Queries &amp; mapping:</strong> I wrote complex queries integrating data from multiple sources and built map capabilities for exploring restaurant nutrition.</p><p><strong>Team collaboration:</strong> I worked collaboratively with my classmates using Git to manage our shared code. We also created a pitch deck presenting NutriMap, linked below alongside the project demo.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>React · Node.js · PostgreSQL · Git · Data modeling (ERD)</p><div class="experience-links"><a href="https://docs.google.com/presentation/d/1sGXIgZwj0shJgk6W38GQvafb9GZ35UtCBjYtkrmSDKg/edit?usp=sharing">View pitch deck <span aria-hidden="true">↗</span></a><a href="https://drive.google.com/file/d/1BtelajqQlxU0rC_0_9lnxmng33rIC5I5/view?usp=sharing">Watch demo <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="nyc-fhv" data-tags="data research">
+        <img class="project-photo" src="assets/projects/nyc-fhv/dropoff-map.png" alt="NYC map showing for-hire vehicle dropoff counts by zone" width="1758" height="1046" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Data</li><li>Research</li></ul>
+          <h2>For Hire Vehicles in NYC Big Data Analysis</h2>
+          <p class="experience-role">Course project · Big Data Analytics</p>
+          <p>Analyzing NYC ride-hailing patterns and driver pay to understand how transportation systems serve people.</p>
+          <details><summary>Read the story<span class="sr-only">: For Hire Vehicles in NYC Big Data Analysis</span></summary><div class="experience-detail"><p>Analyzed more than 5 million Uber and Lyft trips using Python and SQL. The presentation examines 2021 data, airport pickup patterns, and driver-pay prediction using linear regression, ridge regression, and XGBoost. Limitations include pandemic-era data and the distinction between driver pay and profit.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Python · SQL · Folium · Google Colab · XGBoost</p><div class="experience-links"><a href="https://colab.research.google.com/drive/18AD7nja9C9ktwmwYK44cZjdqXJo0qEjz?usp=sharing">Open Colab notebook <span aria-hidden="true">↗</span></a><a href="assets/projects/nyc-fhv/presentation.pdf">View presentation (PDF) <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="coderchicks" data-tags="community software">
+        <img class="project-photo" src="assets/projects/coderchicks/workshop.jpg" alt="CoderChicks workshop participants learning together at desktop computers" width="2576" height="1714" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Community</li><li>Software</li></ul>
+          <h2>CoderChicks</h2>
+          <p class="experience-role">Founder · 2018–2022</p>
+          <p>Making computer science education more accessible through free workshops and an original Python game-design curriculum.</p>
+          <details><summary>Read the story<span class="sr-only">: CoderChicks</span></summary><div class="experience-detail"><p>Founded a nonprofit serving more than 450 girls in low-income communities through 25+ coding workshops. Led more than 50 volunteers and worked with local businesses to raise over $10,000 for workshops. Introduced a Python game-design curriculum at Sanford Middle School.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Python · Curriculum design · Volunteer leadership</p><div class="experience-links"><a href="https://coderchicks.wixsite.com/oursite/about">Visit the CoderChicks website <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/coderchicks/">CoderChicks on Instagram <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="complete-streets" data-tags="software data research">
+        <a href="assets/projects/complete-streets/traffic-simulation.png" aria-label="View full traffic simulation screenshot"><img class="project-photo" src="assets/projects/complete-streets/traffic-simulation.png" alt="NetLogo traffic simulation with car speed graphs, travel time and cost estimates, and a simulated lane of cars" width="2056" height="688" loading="lazy"></a>
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Software</li><li>Data</li><li>Research</li></ul>
+          <h2>Traffic Modeling of Complete Streets Design</h2>
+          <p class="experience-role">Researcher · Wharton Climate Decisions Lab</p>
+          <p>Simulating how street design affects buses, cars, cyclists, and pedestrians—and evaluating the policy tradeoffs.</p>
+          <details><summary>Read the story<span class="sr-only">: Traffic Modeling of Complete Streets Design</span></summary><div class="experience-detail"><p>Developed an agent-based transportation model in NetLogo to evaluate Complete Streets policies in Philadelphia. Analyzed 40 datasets with Python and pandas for transportation performance and return on investment, and presented findings at Penn research and climate events.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>NetLogo · Python · pandas · Agent-based modeling</p><div class="experience-links"><a href="https://docs.google.com/presentation/d/1QKbJWsBLbe3I8w5T_R54JOOg1YWcX2ji/edit?usp=sharing&amp;ouid=108037227120086813030&amp;rtpof=true&amp;sd=true">View research presentation <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="energy" data-tags="software">
+        <img class="experience-image experience-logo" src="assets/projects/siemens-energy/logo.png" alt="Siemens Energy logo" width="4320" height="2430" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Software</li></ul>
+          <h2>Redesigning an Employee Portal</h2>
+          <p class="experience-role">Frontend software engineer intern · Siemens Energy · 2024</p>
+          <p>Contributing to a team redesign of Siemens Energy’s employee time entry and HR portal.</p>
+          <details><summary>Read the story<span class="sr-only">: Redesigning an Employee Portal</span></summary><div class="experience-detail"><p>As a frontend software engineer intern, I worked collaboratively with a team to help redesign the interface for Siemens Energy’s time entry and HR portal. My contribution focused on frontend development for the employee-facing portal.</p><p class="experience-tools"><strong>Focus &amp; methods</strong><br>Frontend development · Interface redesign · Team collaboration</p></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="broadband" data-tags="data research">
+        <img class="experience-image" src="assets/broadband.png" alt="London broadband access project visualization" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Data</li><li>Research</li></ul>
+          <h2>London Disconnected</h2>
+          <p class="experience-role">GIS course project · University College London · 2024</p>
+          <p>Mapping the relationship between broadband access and deprivation to examine who benefits from digital infrastructure.</p>
+          <details><summary>Read the story<span class="sr-only">: London Disconnected</span></summary><div class="experience-detail"><p>Used spatial analysis to investigate broadband access, usage, and socioeconomic deprivation across London. The research found that broadband speed aligned more strongly with income levels than actual usage.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>GIS · Spatial analysis · Infrastructure research</p><div class="experience-links"><a href="assets/Broadband Access in London.pdf">Read report (PDF) <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="runger" data-tags="software">
+        <figure class="runger-preview"><a href="assets/projects/runger/run-screen.png" aria-label="View full Runger screenshot"><img src="assets/projects/runger/run-screen.png" alt="Runger simulated-run screen with a Central Park map, route, speed, distance, timer, and Start button" width="726" height="1504" loading="lazy"></a><figcaption>Simulated run · app preview</figcaption></figure>
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Software</li></ul>
+          <h2>Runger</h2>
+          <p class="experience-role">Course project · iOS development</p>
+          <p>A social running app for tracking outdoor runs and sharing them with other users.</p>
+          <details><summary>Read the story<span class="sr-only">: Runger</span></summary><div class="experience-detail"><p>A team-built iOS running app with location tracking and Apple HealthKit. My contribution focused on persistent data and the views for saving runs and reviewing saved runs.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Swift · iOS · Apple HealthKit · Persistent data</p><div class="experience-links"><a href="https://github.com/kriyip/runger">View source on GitHub <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="thillana" data-tags="creative community">
+        <img class="experience-image" src="assets/carnegie.JPG" alt="Penn Thillana dancers performing at Carnegie Hall" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <h2>Leading Penn Thillana’s Performance at Carnegie Hall</h2>
+          <p class="experience-role">Captain &amp; former marketing chair · Penn Thillana</p>
+          <p>Leading choreography, soundtrack development, and rehearsals to bring Penn Thillana’s performance to Carnegie Hall.</p>
+          <details><summary>Read the story<span class="sr-only">: Leading Penn Thillana’s Performance at Carnegie Hall</span></summary><div class="experience-detail"><p>Led a 25-person dance team, choreographed performances, developed soundtracks, and organized rehearsals. As one of three captains in 2025, I helped lead the preparation and delivery of an 18-dancer performance at Carnegie Hall. Also created promotional materials, branding, and merchandise as marketing chair.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Choreography · Soundtracks · Visual design · Team leadership</p><div class="experience-links"><a href="https://youtu.be/BNOWYauq6D4">Watch Carnegie Hall Performance <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="documentary" data-tags="creative research">
+        <img class="project-photo" src="assets/projects/documentary/pgdi-group.jpg" alt="Penn Global Documentary Institute group standing together on a wooden dock beside the water" width="2048" height="1362" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Research</li></ul>
+          <h2>Film Production &amp; Ethnographic Research in Uganda</h2>
+          <p class="experience-role">Sound production · Penn Global Documentary Institute · 2024</p>
+          <p>Fully funded travel to Uganda and South Africa with the Penn Global Documentary Institute, contributing sound production to two documentary films.</p>
+          <details><summary>Read the story<span class="sr-only">: Film Production &amp; Ethnographic Research in Uganda</span></summary><div class="experience-detail">
+            <p>I was selected for a fully funded program that took me to Uganda and South Africa. In Uganda, I worked on the production teams for <em>Days Between Rest</em> and <em>The Cave Synagogue</em>, contributing sound production to documentaries about Black Jewish communities.</p>
+            <p>My work combined documentary filmmaking with ethnographic research in Mbale. I supported interview sound production and collaborated with local translators on 20 interviews from Luganda to English. I also created promotional material for a Philadelphia museum screening.</p>
+            <p class="experience-tools"><strong>Tools &amp; methods</strong><br>Sound production · Ethnographic interviews · Documentary filmmaking · Team collaboration</p>
+            <div class="experience-links">
+              <a href="https://youtu.be/7G64rzu8uVU">Watch Days Between Rest trailer <span aria-hidden="true">↗</span></a>
+              <a href="https://youtu.be/uDNO3p6BuGU">Watch The Cave Synagogue trailer <span aria-hidden="true">↗</span></a>
+              <a href="https://www.imdb.com/name/nm16643106/">View my IMDb profile <span aria-hidden="true">↗</span></a>
+            </div>
+          </div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="urban-studies-design" data-tags="creative community">
+        <a href="assets/projects/urban-studies-design/hoodie-design.jpg" aria-label="View full image: Design for Penn Urban Studies"><img class="project-photo" src="assets/projects/urban-studies-design/hoodie-design.jpg" alt="Front and back of a cream Penn Urban Studies hoodie with green lettering and urban illustrations" width="2188" height="1878" loading="lazy"></a>
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <h2>Design for Penn Urban Studies</h2>
+          <p class="experience-role">Communications assistant · Penn Urban Studies</p>
+          <p>Designing department hoodies, brochures, and Instagram flyers for the Urban Studies community.</p>
+          <details><summary>Read the story<span class="sr-only">: Design for Penn Urban Studies</span></summary><div class="experience-detail"><p>As a communications assistant for Penn’s Urban Studies department, I created visual materials across apparel, print, and social media. My work included hoodies for the major, department brochures, and Instagram flyers. The hoodie design and linked social media sample show examples of this work.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Visual design · Print design · Apparel design · Social media</p><div class="experience-links"><a href="https://www.instagram.com/p/DUTSGBtji2q/">View Sample Work on Instagram <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="photography" data-tags="creative">
+        <a href="assets/projects/photography/graduation-portrait.jpeg" aria-label="View full image: Photography Freelancing"><img class="project-photo" src="assets/projects/photography/graduation-portrait.jpeg" alt="Five graduates in gowns seated among library bookshelves holding books" width="1206" height="1592" loading="lazy"></a>
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Creative</li></ul>
+          <h2>Photography Freelancing</h2>
+          <p class="experience-role">Photographer · deesigned123</p>
+          <p>Graduation portraits celebrating students and the friendships they built along the way.</p>
+          <details><summary>Read the story<span class="sr-only">: Photography Freelancing</span></summary><div class="experience-detail"><p>I photograph graduation shoots, creating individual and group portraits to mark the end of students’ time at university. This library portrait is a sample of my work; more photographs are available on my photography Instagram.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Portrait photography · Group photography · Composition</p><div class="experience-links"><a href="https://www.instagram.com/deesigned123/">Explore More Photography on Instagram <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="film-culture" data-tags="creative community">
+        <img class="experience-image experience-logo" src="assets/projects/film-culture/logo.png" alt="Film Culture Program, Gregory College House logo" width="659" height="494" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <h2>Film Culture Program Manager</h2>
+          <p class="experience-role">Teaching assistant · Penn Film Culture Program</p>
+          <p>Creating a film series around displacement and making space for conversation after each screening.</p>
+          <details><summary>Read the story<span class="sr-only">: Film Culture Program Manager</span></summary><div class="experience-detail"><p>Curated 15 films around a self-created theme of displacement, facilitated weekly screenings and discussion for a class of 80 students, and managed attendance.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Film curation · Discussion facilitation · Teaching</p></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="penn-abroad" data-tags="creative community">
+        <img class="project-photo" src="assets/projects/penn-abroad/semester-abroad.jpg" alt="Deepika in front of Buckingham Palace during her semester abroad in London" width="1190" height="1200" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <h2>Study Abroad Global Correspondant</h2>
+          <p class="experience-role">Global correspondent · Penn Abroad</p>
+          <p>Encouraging fellow students to study abroad through original content and conversations about life overseas.</p>
+          <details><summary>Read the story<span class="sr-only">: Study Abroad Global Correspondant</span></summary><div class="experience-detail"><p>As a Penn Abroad Global Correspondent, I created original social media content, blog posts, and day-in-the-life videos to encourage fellow students to study abroad. Drawing on my semester at University College London, I shared a personal view of life and learning overseas.</p><p>I also spoke at two send-off student panels, sharing my study abroad experience with students preparing for their own time abroad.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Social media content · Blog writing · Video storytelling · Public speaking</p><div class="experience-links"><a href="https://global.upenn.edu/pennabroad/whats-next-after-study-abroad/">Read my blog: What’s next after Study Abroad? <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/reel/DBeKUfFqz-0/">Watch my Penn Abroad Instagram reel <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="econsult" data-tags="research data">
+        <img class="experience-image experience-logo" src="assets/projects/econsult/esi-logo.jpeg" alt="ESI Econsult Solutions Inc. logo" width="738" height="246" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Research</li><li>Data</li></ul>
+          <h2>Internship at E-Consult Solutions</h2>
+          <p class="experience-role">Fieldwork internship · URBS 3000 seminar</p>
+          <p>Fieldwork for my URBS 3000 seminar, contributing research on urban development, transportation, and economic disparities at E-Consult Solutions.</p>
+          <details><summary>Read the story<span class="sr-only">: Internship at E-Consult Solutions</span></summary><div class="experience-detail"><p>As part of my URBS 3000 seminar fieldwork, I contributed research on office-to-residential conversions, SEPTA service changes, and spending patterns. I also used Excel to visualize racial disparities in bank lending in Philadelphia for a client deliverable.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Excel · Economic research · Data visualization</p></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="gardens" data-tags="research community">
+        <img class="project-photo" src="assets/projects/community-gardens/garden.jpeg" alt="Community garden with planting beds and the Philadelphia skyline in the background" width="547" height="365" loading="lazy">
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Research</li><li>Community</li></ul>
+          <h2>Karen Refugees &amp; Community Gardens</h2>
+          <p class="experience-role">Qualitative research · Philadelphia</p>
+          <p>Exploring the role of community gardens in the lives of Karen refugees in Philadelphia through qualitative interviews.</p>
+          <details><summary>Read the story<span class="sr-only">: Karen Refugees &amp; Community Gardens</span></summary><div class="experience-detail"><p>I conducted qualitative interviews with community members to understand the role of community gardens in the lives of Karen refugees in Philadelphia.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Qualitative interviews · Community research</p><div class="experience-links"><a href="https://docs.google.com/document/d/17t3r-8416XaCLsKaiO6vCAXxw4NcXDzy_FqHdCZXFlU/edit?usp=sharing">Read the research document <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
+      <article class="experience-card" id="formosa" data-tags="research">
+        <a href="assets/projects/formosa/land-use-map.png" aria-label="View full Louisiana land use map"><img class="project-photo" src="assets/projects/formosa/land-use-map.png" alt="Map of St. James Parish showing industrial sites, residential communities, and impacts of the 2014 land use plan; credited to Justin Kray for RISE St. James and Louisiana Bucket Brigade" width="1084" height="1378" loading="lazy"></a>
+        <div class="experience-body">
+          <ul class="experience-tags" aria-label="Categories"><li>Research</li></ul>
+          <h2>Social Impact Assessment of Petrochemical Factory in Louisiana</h2>
+          <p class="experience-role">Course project · University College London</p>
+          <p>Examining the social and environmental implications of the proposed Formosa Plastics Sunshine Project in Louisiana.</p>
+          <details><summary>Read the story<span class="sr-only">: Social Impact Assessment of Petrochemical Factory in Louisiana</span></summary><div class="experience-detail"><p>I conducted a social impact assessment of the proposed Formosa Plastics Sunshine Project in Louisiana, following a rigorous assessment framework. Through archival research, I examined the history of enslaved people in the area alongside environmental concerns and the potential effects of petrochemical development on surrounding communities.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Archival research · Social impact assessment · Historical analysis · Environmental concerns</p><div class="experience-links"><a href="https://docs.google.com/document/d/1CYjgJ9D9yhvduUsH6ECLRNc5bXUKb2EDXPH6dWbqQp0/edit?usp=sharing">Read the Social Impact Assessment <span aria-hidden="true">↗</span></a></div></div></details>
+        </div>
+      </article>
     </div>
-    </div>
-
-    <!-- ── CARD 3 ── -->
-    <div class="work-card" data-tags="research,design" data-modal="modal-3">
-    <img class="work-card-thumb" src="assets/carnegie.JPG" alt="Carnegie">
-      <div class="work-card-body">
-        <div class="work-card-tags">
-          <span class="work-tag">Design</span>
-          <span class="work-tag">Management</span>
-        </div>
-        <h2 class="work-card-title">Penn Thillana Carnegie Hall Performance</h2>
-        <p class="work-card-teaser">As one of Penn Thillana's three captains in 2025, I led the team to perform at Carnegie Hall, an annual
-          Penn Performing Arts House event for alumni and families. Our 12 minute performance with 18 student dancers captured stories of female strength and qualities. 
-        </p>
-        <button class="btn-show-more" data-modal="modal-3">show more ↗</button>
-      </div>
-    </div>
-
-    <!-- ── CARD 4 ── -->
-    <div class="work-card" data-tags="urban-studies,project-management" data-modal="modal-4">
-    <img class="work-card-thumb" src="assets/broadband.png" alt="Broadband">
-      <div class="work-card-body">
-        <div class="work-card-tags">
-          <span class="work-tag">Urban Studies</span>
-          <span class="work-tag">Research</span>
-          <span class="work-tag">Technology</span>
-        </div>
-        <h2 class="work-card-title">GIS Analysis of Broadband Access in London</h2>
-        <p class="work-card-teaser">A final project in my exchange term at University College London's Bartlett School of Planning, 
-          this project uses an ArcGIS analysis to understand the relationships between broadband Internet access, class, race, age, and
-          the Index of Multiple Deprivation. 
-        </p></p>
-        <button class="btn-show-more" data-modal="modal-4">show more ↗</button>
-      </div>
-    </div>
-
-    <!-- ── CARD 5 ── -->
-    <div class="work-card" data-tags="technology,research" data-modal="modal-5">
-      <div class="work-card-thumb placeholder-tech"></div>
-      <div class="work-card-body">
-        <div class="work-card-tags">
-          <span class="work-tag">Urban Studies</span>
-          <span class="work-tag">Research</span>
-        </div>
-        <h2 class="work-card-title">Social Impact Assessment on Formosa Plastics Sunshine Project</h2>
-        <p class="work-card-teaser">A final project in my exchange term at University College London's Bartlett School of Planning, this 
-          project conducts a rigorous Social Impact Assessment on Taiwanese company Formosa Plastics on their new petrochemical complex to 
-          be built in Louisiana. It understands its 
-        </p>
-        <button class="btn-show-more" data-modal="modal-5">show more ↗</button>
-      </div>
-    </div>
-
-    <!-- ── CARD 6 ── -->
-    <div class="work-card" data-tags="design,urban-studies" data-modal="modal-6">
-      <div class="work-card-thumb placeholder-urban"></div>
-      <div class="work-card-body">
-        <div class="work-card-tags">
-          <span class="work-tag">Design</span>
-          <span class="work-tag">Urban Studies</span>
-        </div>
-        <h2 class="work-card-title">Project Title 6</h2>
-        <p class="work-card-teaser">One or two sentences on this project and what it contributes.</p>
-        <button class="btn-show-more" data-modal="modal-6">show more ↗</button>
-      </div>
-    </div>
-
-  </div><!-- end .work-grid -->
-
-
-  <!-- ══════════════════════════════════════════
-       MODALS
-  ══════════════════════════════════════════ -->
-
-  <!-- MODAL 1 -->
-<div class="modal-overlay" id="modal-1" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-  <div class="modal">
-    <div class="modal-close">
-      <button class="modal-close-btn" aria-label="Close">✕</button>
-    </div>
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-tags">
-          <span class="work-tag">Urban Studies</span>
-          <span class="work-tag">Research</span>
-          <span class="work-tag">Technology</span>
-        </div>
-        <h2 class="modal-title" id="modal-1-title">Nobody Moves: The Impact of Rideshare Apps on Bengaluru's Urban Landscape</h2>
-        <p class="modal-subtitle">University of Pennsylvania · Urban Studies Thesis · Fall 2025</p>
-      </div>
-      <hr class="modal-divider">
-      <p class="modal-desc">
-        Bengaluru is one of the most congested cities in the world. There has been a recent surge in rideshare services utilized by affluent residents. This paper will analyze how rideshare platforms affect Bengaluru's transportation infrastructure, mobility inequalities, and increasing platform capitalism.
-        Utilizing semi-structured interviews conducted in-person in August 2025 with Bengaluru drivers, residents, platform owners, and experts, this paper analyzes over forty perspectives to analyze impacts of rideshare platforms. The interviews were conducted in auto-rickshaws, rideshare cars, and public buses, metros, and parks for thirty minutes to an hour, in English, Kannada, and Tamil.
-        The results indicated that rideshare platforms have become a daily solution for affluent residents, making them less likely to use public transit. They also indicated that they create a wider gap in transportation experiences based on class. Additionally, rideshare apps have a monopoly on private rides, which creates driver labor precarity.
-        This paper concludes that rideshare platforms are ultimately a setback for sustainable transportation and social equality in Bengaluru. As Bengaluru implements the new rapid metro system, it is important to consider how rideshare platforms may affect ridership.
-      </p>
-
-      <!-- SLIDE DECK — paste your Google Slides embed URL below -->
-      <!-- SLIDE DECK -->
-    <p class="modal-section-label">slide deck</p>
-    <div class="modal-pdf">
-    <iframe
-        src="assets/URBS presentation.pdf"
-        title="Nobody Moves slide deck"
-    ></iframe>
-    </div>
-
-      <!-- LINKS — PDF as a clickable pill, plus any others -->
-      <p class="modal-section-label">links</p>
-      <div class="modal-links">
-        <a class="modal-link" href="assets/Nobody Moves_ Rideshare Apps in Bengaluru.pdf" target="_blank" rel="noopener">↗ full paper (pdf)</a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-  <!-- MODAL 2 -->
-  <div class="modal-overlay" id="modal-2" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
-    <div class="modal">
-      <div class="modal-close">
-        <button class="modal-close-btn" aria-label="Close">✕</button>
-      </div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-tags">
-            <span class="work-tag">Technology</span>
-            <span class="work-tag">Project Management</span>
-          </div>
-          <h2 class="modal-title" id="modal-2-title">GetHomeSafe</h2>
-          <p class="modal-subtitle">Programmer · CIS 4120 Human Computer Interaction · 2025</p>
-        </div>
-        <hr class="modal-divider">
-        <p class="modal-desc">I built this project in CIS 4120 where we studied how humans and computers interact, with a focus on seamless
-          UI experiences. In collaboration with two other classmates, I focused on implementing Google Maps API and having the matching
-        algorithm between users for live pairing. </p>
-
-        <p class="modal-section-label">demo video</p>
-        <div class="modal-video">
-          <iframe src="https://www.youtube.com/embed/xEIEMdesdaM" allowfullscreen title="Project 2 demo"></iframe>
-        </div>
-
-        <p class="modal-section-label">links</p>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 3 -->
-  <div class="modal-overlay" id="modal-3" role="dialog" aria-modal="true" aria-labelledby="modal-3-title">
-    <div class="modal">
-      <div class="modal-close">
-        <button class="modal-close-btn" aria-label="Close">✕</button>
-      </div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-tags">
-            <span class="work-tag">Research</span>
-            <span class="work-tag">Design</span>
-          </div>
-          <h2 class="modal-title" id="modal-3-title">Penn Thillana Carnegie Hall Performance</h2>
-          <p class="modal-subtitle">Captain · Penn Thillana · 2025</p>
-        </div>
-        <hr class="modal-divider">
-        <p class="modal-desc">This piece, performed on December 6 2025 at Zankel Auditorium in Carnegie Hall, is a bharatnatyam performance, 
-          which is an ancient dance form of India. As the captain of the team, I helped the team achieve this opportunity as one of Penn's 
-          6 performing arts team afforded this chance, and helped with choreography, formations, and rehearsal logistics. In this piece, we 
-          dance to traditional and contemporary music of India and America, and blend various Indian dance forms such as bharatnatyam, kathak, and kuchipudi. 
-        </p>
-
-         <p class="modal-section-label">demo video</p>
-        <div class="modal-video">
-          <iframe src="https://www.youtube.com/embed/qDmwanEnzFc" allowfullscreen title="Carnegie Hall Performance"></iframe>
-        </div>
-
-        <p class="modal-section-label">links</p>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 4 -->
-  <div class="modal-overlay" id="modal-4" role="dialog" aria-modal="true" aria-labelledby="modal-4-title">
-    <div class="modal">
-      <div class="modal-close">
-        <button class="modal-close-btn" aria-label="Close">✕</button>
-      </div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-tags">
-            <span class="work-tag">Urban Studies</span>
-            <span class="work-tag">Research</span>
-            <span class="work-tag">Technology</span>
-          </div>
-          <h2 class="modal-title" id="modal-4-title">London Disconnected: A Spatial Perspective on Broadband Access and Disparity</h2>
-          <p class="modal-subtitle">Exchange Student · University College London · 2024</p>
-        </div>
-        <hr class="modal-divider">
-        <p class="modal-desc">As an exchange student at University College London's Barlett School of Planning, I conducted a GIS Analysis
-          using data from UK's Consumer Data Research Centre using ArcGIS to understand the relations between broadband Internet access, 
-          class, and the Index of Multiple Deprivations. This was a final report for a course on GIS, and my findings stated that lower income
-          areas are less served by broadband access, despite having similarly low need as higher income neighborhoods.
-        </p>
-
-        <p class="modal-section-label">final report</p>
-        <div class="modal-pdf">
-          <iframe src="assets/Broadband Access in London.pdf" title="Project 4 PDF"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 5 -->
-  <div class="modal-overlay" id="modal-5" role="dialog" aria-modal="true" aria-labelledby="modal-5-title">
-    <div class="modal">
-      <div class="modal-close">
-        <button class="modal-close-btn" aria-label="Close">✕</button>
-      </div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-tags">
-            <span class="work-tag">Technology</span>
-            <span class="work-tag">Research</span>
-          </div>
-          <h2 class="modal-title" id="modal-5-title">Project Title 5</h2>
-          <p class="modal-subtitle">Role · Organization · Year</p>
-        </div>
-        <hr class="modal-divider">
-        <p class="modal-desc">Longer description goes here.</p>
-
-        <p class="modal-section-label">demo video</p>
-        <div class="modal-video">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen title="Project 5 demo"></iframe>
-        </div>
-
-        <p class="modal-section-label">links</p>
-        <div class="modal-links">
-          <a class="modal-link" href="#" target="_blank" rel="noopener">↗ github</a>
-          <a class="modal-link" href="#" target="_blank" rel="noopener">↗ paper</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 6 -->
-  <div class="modal-overlay" id="modal-6" role="dialog" aria-modal="true" aria-labelledby="modal-6-title">
-    <div class="modal">
-      <div class="modal-close">
-        <button class="modal-close-btn" aria-label="Close">✕</button>
-      </div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-tags">
-            <span class="work-tag">Design</span>
-            <span class="work-tag">Urban Studies</span>
-          </div>
-          <h2 class="modal-title" id="modal-6-title">Project Title 6</h2>
-          <p class="modal-subtitle">Role · Organization · Year</p>
-        </div>
-        <hr class="modal-divider">
-        <p class="modal-desc">Longer description goes here.</p>
-
-        <p class="modal-section-label">photos</p>
-        <div class="modal-photos">
-          <img src="assets/project6-photo1.jpg" alt="Project 6 photo 1">
-          <img src="assets/project6-photo2.jpg" alt="Project 6 photo 2">
-        </div>
-
-        <p class="modal-section-label">links</p>
-        <div class="modal-links">
-          <a class="modal-link" href="#" target="_blank" rel="noopener">↗ case study</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <footer>
-    <p>© <span id="year"></span> deepika kannan &nbsp;✦&nbsp; made with ♡</p>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    /* ── tag filtering ── */
-    const filterBtns = document.querySelectorAll(".filter-btn");
-    const cards = document.querySelectorAll(".work-card");
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filter = btn.dataset.filter;
-
-        cards.forEach(card => {
-          if (filter === "all") {
-            card.classList.remove("hidden");
-          } else {
-            const tags = card.dataset.tags.split(",");
-            card.classList.toggle("hidden", !tags.includes(filter));
-          }
-        });
-      });
-    });
-
-    /* ── modals ── */
-    function openModal(id) {
-      const overlay = document.getElementById(id);
-      if (!overlay) return;
-      overlay.classList.add("open");
-      document.body.style.overflow = "hidden";
-      // focus the close button for accessibility
-      overlay.querySelector(".modal-close-btn")?.focus();
-    }
-
-    function closeModal(overlay) {
-      overlay.classList.remove("open");
-      document.body.style.overflow = "";
-    }
-
-    // "show more" buttons on cards
-    document.querySelectorAll(".btn-show-more").forEach(btn => {
-      btn.addEventListener("click", e => {
-        e.stopPropagation();
-        openModal(btn.dataset.modal);
-      });
-    });
-
-    // clicking anywhere on a card also opens it
-    cards.forEach(card => {
-      card.addEventListener("click", () => openModal(card.dataset.modal));
-    });
-
-    // close button inside modal
-    document.querySelectorAll(".modal-close-btn").forEach(btn => {
-      btn.addEventListener("click", () => closeModal(btn.closest(".modal-overlay")));
-    });
-
-    // click backdrop to close
-    document.querySelectorAll(".modal-overlay").forEach(overlay => {
-      overlay.addEventListener("click", e => {
-        if (e.target === overlay) closeModal(overlay);
-      });
-    });
-
-    // Escape key to close
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") {
-        document.querySelectorAll(".modal-overlay.open").forEach(closeModal);
-      }
-    });
-  </script>
+    <div class="board-end"><p>Interested in building something that matters?</p><a class="btn btn-ghost" href="contact.html">let's connect <span aria-hidden="true">♡</span></a></div>
+  </main>
+  <footer><p>© <span id="year"></span> deepika kannan &nbsp;✦&nbsp; made with ♡</p></footer>
 </body>
 </html>

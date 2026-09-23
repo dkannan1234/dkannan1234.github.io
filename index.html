@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home | Deepika Kannan</title>
+  <title>Deepika Kannan | Software Engineer</title>
+  <meta name="description" content="Deepika Kannan is a software engineer with a background in urban research and an interest in public-interest technology. Explore selected projects and work.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="board.css">
   <style>
     /* ── heart frame (overrides .photo-frame from styles.css) ── */
     .photo-frame {
@@ -53,21 +55,21 @@
     }
   </style>
 </head>
-<body>
+<body class="home-page">
 
   <!-- floating decorations -->
-  <span class="sparkle">✦</span>
-  <span class="sparkle">♡</span>
-  <span class="sparkle">✿</span>
-  <span class="sparkle">✦</span>
-  <span class="sparkle">❋</span>
-  <span class="sparkle">♡</span>
-  <span class="sparkle">✦</span>
-  <span class="sparkle">✿</span>
+  <span class="sparkle" aria-hidden="true">✦</span>
+  <span class="sparkle" aria-hidden="true">♡</span>
+  <span class="sparkle" aria-hidden="true">✿</span>
+  <span class="sparkle" aria-hidden="true">✦</span>
+  <span class="sparkle" aria-hidden="true">❋</span>
+  <span class="sparkle" aria-hidden="true">♡</span>
+  <span class="sparkle" aria-hidden="true">✦</span>
+  <span class="sparkle" aria-hidden="true">✿</span>
 
   <header>
     <nav>
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html" class="active" aria-current="page">Home</a>
       <a href="work.html">Work</a>
       <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
@@ -75,9 +77,10 @@
   </header>
 
   <main class="home-main">
+    <section class="home-hero" aria-labelledby="intro-title">
     <div class="photo-frame">
       <!-- soft blurred heart behind the photo -->
-      <svg class="heart-bg" width="280" height="260" viewBox="0 0 280 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg aria-hidden="true" class="heart-bg" width="280" height="260" viewBox="0 0 280 260" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <filter id="heartBlur" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="14" result="blur"/>
@@ -101,24 +104,58 @@
     </div>
 
     <div class="intro">
-      <span class="tag">✦ hey there ✦</span>
-      <h1>i'm <em>deepika kannan.</em></h1>
-      <p class="cares">
-        I'm a senior at the University of Pennsylvania double majoring in Urban Studies and Computer Science.
-      </p>
-      <p class="cares">
-        I'm passionate about creating more community-oriented cities and technologies.
-      </p>
-      <div class="divider-dots">
-        <span></span><span></span><span></span>
+      <span class="tag">Researcher. Builder. Artist.</span>
+      <h1 id="intro-title">I’m <em>Deepika Kannan.</em></h1>
+      <p class="home-lead">I build software, study cities, and create art to bring people together.</p>
+      <p class="cares">I graduated from the University of Pennsylvania with degrees in Computer Science and Urban Studies. I'm exploring opportunities to build software that serves the public good.</p>
+      <div class="cta-wrap">
+        <a href="#featured-projects" class="btn btn-primary">explore projects <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="resume.html" class="btn btn-ghost">view resume</a>
       </div>
     </div>
+    </section>
 
-    <div class="cta-wrap">
-      <a href="work.html" class="btn btn-primary">
-        see my work <span class="arrow">→</span>
-      </a>
-    </div>
+    <section class="featured-projects" id="featured-projects" aria-labelledby="featured-title">
+      <div class="featured-heading">
+        <div>
+          <h2 class="section-title" id="featured-title">Featured <em>Projects.</em></h2>
+          <p>Selected work in software, urban research, and technology consulting.</p>
+        </div>
+        <a href="work.html" class="home-work-link">View all work <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="featured-grid">
+        <a class="work-card featured-card-link" href="work.html#gethomesafe">
+          <img class="featured-card-image" src="assets/ghs.png" alt="GetHomeSafe project screenshot" loading="lazy">
+          <div class="work-card-body">
+            <h3 class="work-card-title">GetHomeSafe</h3>
+            <p class="work-card-desc">A platform that helps women find someone to walk home with. I implemented Google Maps integration and a matching algorithm for live pairing, collaborating with two classmates.</p>
+            <p class="stack-label">Tools &amp; Methods</p>
+            <div class="work-card-tags"><span class="work-tag">Google Maps API</span><span class="work-tag">Figma</span></div>
+            <span class="home-work-link">Project Details <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="work-card featured-card-link" href="work.html#thesis">
+          <img class="featured-card-image" src="assets/thesis-cover.jpg" alt="Cover of the Nobody Moves rideshare thesis" loading="lazy">
+          <div class="work-card-body">
+            <h3 class="work-card-title">Published Senior Thesis</h3>
+            <p class="work-card-desc">Research on how rideshare platforms shape social hierarchies in Bengaluru, supported by a competitive $3,500 Hassenfeld Grant. Published in the Barnard-Columbia Urban Review.</p>
+            <p class="stack-label">Tools &amp; Methods</p>
+            <div class="work-card-tags"><span class="work-tag">Field Interviews</span><span class="work-tag">NVivo</span><span class="work-tag">Urban Research</span></div>
+            <span class="home-work-link">Project Details <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="work-card featured-card-link" href="work.html#pwc">
+          <img class="featured-card-image" src="assets/projects/pwc/logo.png" alt="PwC logo" loading="lazy">
+          <div class="work-card-body">
+            <h3 class="work-card-title">Internship at PwC</h3>
+            <p class="work-card-desc">Contributed to an SAP SuccessFactors implementation through HR change management and PMO work, including executive updates, action trackers, and team coordination.</p>
+            <p class="stack-label">Tools &amp; Methods</p>
+            <div class="work-card-tags"><span class="work-tag">SAP SuccessFactors</span><span class="work-tag">PMO</span><span class="work-tag">Change Management</span></div>
+            <span class="home-work-link">Project Details <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer>

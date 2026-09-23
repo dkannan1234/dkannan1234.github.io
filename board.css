@@ -1,0 +1,69 @@
+/* Work board and homepage preview; shared palette and components live in styles.css. */
+.board-page main { position: relative; z-index: 5; }
+.board-intro { max-width: 800px; margin: 1.5rem auto 0; padding: 1.5rem 1.5rem 0; text-align: center; }
+.board-intro .tag { color: var(--brown); letter-spacing: 0.1em; }
+.board-intro h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.2; margin: 1.2rem 0; }
+.board-intro h1 em { color: var(--pink-deep); }
+.board-intro > p { max-width: 62ch; margin: 0 auto 0.8rem; }
+.board-intro .board-note { font-size: 0.85rem; }
+.board-controls { padding: 1.5rem 1.2rem 0; text-align: center; }
+.board-controls[hidden], .experience-card[hidden] { display: none; }
+.board-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.board-filters button { border: 1px solid var(--beige-mid); background: var(--white); border-radius: 24px; padding: 0.65rem 1.1rem; min-height: 44px; font: 400 0.85rem var(--font-body); color: var(--brown); cursor: pointer; }
+.board-filters button:hover, .board-filters button[aria-pressed="true"] { background: var(--pink-light); border-color: var(--pink-deep); color: var(--text); }
+#board-count { font-size: 0.8rem; margin: 0.8rem 0 0; }
+.experience-board { columns: 3; column-gap: 1.2rem; max-width: 1200px; padding: 1.5rem 2rem 2rem; margin: auto; }
+.experience-card { display: inline-block; vertical-align: top; width: 100%; break-inside: avoid; margin-bottom: 1.2rem; border: 1px solid var(--beige-mid); border-radius: 18px; overflow: hidden; background: var(--white); scroll-margin-top: 1.5rem; box-shadow: 0 3px 12px rgba(122,92,79,0.04); }
+.experience-card:target { outline: 3px solid var(--pink-deep); outline-offset: 3px; }
+.experience-image { width: 100%; height: auto; max-height: 330px; object-fit: cover; }
+.experience-art { min-height: 190px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 0.6rem; padding: 1.5rem; background: var(--pink-light); color: var(--brown); }
+.experience-art strong { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; line-height: 1.25; }
+.experience-art > span { font-size: 0.8rem; }
+.experience-art > span:first-child { font-size: 1.6rem; }
+.art-1 { background: var(--beige-dark); min-height: 225px; }
+.art-2 { background: linear-gradient(140deg, var(--beige), var(--pink-light)); min-height: 170px; }
+.experience-body { padding: 1.3rem; }
+.experience-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.85rem; }
+.experience-tags li { font-size: 0.68rem; font-weight: 400; background: var(--beige); color: var(--brown); padding: 0.2rem 0.6rem; border-radius: 20px; }
+.experience-body h2 { font-family: var(--font-display); font-size: 1.4rem; line-height: 1.25; margin-bottom: 0.6rem; }
+.experience-body p { font-size: 0.9rem; line-height: 1.7; }
+.experience-body .experience-role { font-size: 0.75rem; font-weight: 400; line-height: 1.6; }
+.experience-body summary { color: var(--brown); font-size: 0.85rem; font-weight: 400; cursor: pointer; padding: 0.7rem 0; min-height: 44px; border-top: 1px solid var(--beige-mid); }
+.experience-detail { padding-top: 0.65rem; }
+.experience-body .experience-tools { font-size: 0.8rem; }
+.experience-tools strong { font-weight: 400; }
+.experience-links { display: flex; flex-direction: column; gap: 0.3rem; }
+.experience-links a { padding: 0.55rem 0; font-size: 0.85rem; text-underline-offset: 4px; }
+.board-page :is(a, button, summary):focus-visible { outline: 3px solid var(--brown); outline-offset: 3px; }
+.board-end { text-align: center; padding: 0 1.5rem 3rem; }
+.board-end .btn { color: var(--brown); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.home-connections { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--beige-mid); }
+.connection-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+.connection-card { display: block; padding: 1.4rem; border: 1px solid var(--beige-mid); border-radius: 16px; background: var(--beige); text-decoration: none; }
+.connection-card:hover { background: var(--pink-light); }
+.connection-card span { font-size: 0.75rem; color: var(--brown); }
+.connection-card h3 { font-family: var(--font-display); font-size: 1.25rem; margin: 0.6rem 0; }
+.connection-card p { font-size: 0.9rem; }
+@media (max-width: 900px) { .experience-board { columns: 2; } }
+@media (max-width: 600px) {
+  .experience-board { columns: 1; padding: 1rem 1.2rem; }
+  .board-intro { margin-top: 0; }
+  .board-intro .tag { font-size: 0.65rem; }
+  .board-page nav { justify-content: center; gap: clamp(0.7rem, 4vw, 1.2rem); }
+  .board-page nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  .connection-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.board-page) { scroll-behavior: auto; }
+  .board-page *, .board-page *::before, .board-page *::after { animation: none !important; transition: none !important; }
+}
+
+/* Preserve the full portrait app screen instead of cropping its controls. */
+.runger-preview { margin: 0; padding: 1.2rem; background: var(--beige-dark); text-align: center; }
+.runger-preview a { display: block; width: fit-content; max-width: 100%; margin: auto; }
+.runger-preview img { width: auto; height: auto; max-height: 380px; max-width: 100%; margin: auto; border-radius: 18px; }
+.runger-preview figcaption { margin-top: 0.65rem; color: var(--brown); font-size: 0.75rem; }
+
+/* Display the supplied company logo in full without cropping. */
+.experience-image.experience-logo { display: block; height: auto; max-height: none; object-fit: contain; background: white; }
