@@ -10,18 +10,18 @@ function filterBoard(category) {
   });
   filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === category)));
   const label = filters.find(button => button.dataset.filter === category)?.textContent;
-  count.textContent = `${visible} ${visible === 1 ? 'experience' : 'experiences'}${category === 'all' ? ' · across software, society & creativity' : ` · ${label}`}`;
+  count.textContent = `${visible} ${visible === 1 ? 'experience' : 'experiences'}${category === 'all' ? ' · across software, research & art' : ` · ${label}`}`;
 }
 
 filters.forEach(button => button.addEventListener('click', () => filterBoard(button.dataset.filter)));
 document.querySelector('.board-controls').hidden = false;
-filterBoard('all');
+filterBoard('software');
 
 // Links from the homepage reveal the full story, including after filtering.
 function revealLinkedCard() {
   const card = cards.find(card => `#${card.id}` === window.location.hash);
   if (!card) return;
-  if (card.hidden) filterBoard('all');
+  if (card.hidden) filterBoard(card.dataset.tags.split(' ')[0]);
   card.querySelector('details').open = true;
   requestAnimationFrame(() => card.scrollIntoView({ block: 'start' }));
 }

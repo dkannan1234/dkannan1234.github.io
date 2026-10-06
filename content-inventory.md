@@ -4,9 +4,9 @@ Editorial source of truth; not rendered on the website. Website copy is currentl
 
 ## Organization
 
-- Homepage: GetHomeSafe, Published Senior Thesis, and Internship at PwC. Each image and full card links to the corresponding expanded Work entry. Grounded in People section removed.
+- Homepage: Published Paper on Rideshare Apps in India, GetHomeSafe, and Leading Penn Thillana’s Performance at Carnegie Hall, in that order. Each image and full card links to the corresponding expanded Work entry. Grounded in People section removed.
 - Work order: Published senior thesis, PwC, GetHomeSafe, then the remaining experiences.
-- Work: a visual board with Software, Data, Research, Community, and Creative filters. One card can have multiple tags. Software includes implementation and consulting; role labels distinguish them.
+- Work: three filters — Software & Data, Research, Art. Software & Data opens by default; direct project links select the relevant category and expand the story. Experiences can overlap.
 - Long-form context: expandable stories, available without JavaScript. Existing real reports and videos remain linked.
 - Resume: latest owner-supplied PDF is used for the public viewer and downloads.
 - Personal street addresses and phone numbers from the supplied résumés were not copied into new website content.
@@ -42,7 +42,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### NutriMap (`nutrimap`)
 
-- Categories: Software, Data
+- Categories: Software & Data
 - Role/context: CIS 4500 · Team course project
 - Summary: Explore the nutritional landscape of US restaurants through interactive maps, cuisine comparisons, and nutrition filters.
 - Evidence: Built on the Yelp Open Dataset and Food.com recipe dataset. The dashboard includes restaurant details, macro comparisons, healthy picks, and neighborhood-level trends.
@@ -57,7 +57,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### GetHomeSafe (`gethomesafe`)
 
-- Categories: Software, Community
+- Categories: Software & Data
 - Role/context: Programmer · Human Computer Interaction
 - Summary: A platform that helps women find someone to walk home with, connecting interface design with everyday safety.
 - Evidence: Collaborating with two classmates, I implemented the Google Maps API integration and a matching algorithm for live pairing. The team prototyped the experience in Figma.
@@ -69,7 +69,7 @@ Only add files you want included with the public website. Draft/private source f
 
 - Image: `assets/projects/nyc-fhv/dropoff-map.png` — owner-supplied dropoff map; displayed on homepage and work board.
 
-- Categories: Data, Research
+- Categories: Software & Data, Research
 - Role/context: Course project · Big Data Analytics
 - Summary: Analyzing NYC ride-hailing patterns and driver pay to understand how transportation systems serve people.
 - Evidence: Analyzed more than 5 million Uber and Lyft trips using Python and SQL. The presentation examines 2021 data, airport pickup patterns, and driver-pay prediction using linear regression, ridge regression, and XGBoost. Limitations include pandemic-era data and the distinction between driver pay and profit.
@@ -80,7 +80,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### CoderChicks (`coderchicks`)
 
-- Categories: Community, Software
+- Categories: Software & Data
 - Role/context: Founder · 2018–2022
 - Summary: Making computer science education more accessible through free workshops and an original Python game-design curriculum.
 - Evidence: Founded a nonprofit serving more than 450 girls in low-income communities through 25+ coding workshops. Led more than 50 volunteers and worked with local businesses to raise over $10,000 for workshops. Introduced a Python game-design curriculum at Sanford Middle School.
@@ -93,7 +93,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Traffic Modeling of Complete Streets Design (`complete-streets`)
 
-- Categories: Software, Data, Research
+- Categories: Software & Data, Research
 - Role/context: Researcher · Wharton Climate Decisions Lab
 - Summary: Simulating how street design affects buses, cars, cyclists, and pedestrians—and evaluating the policy tradeoffs.
 - Evidence: Developed an agent-based transportation model in NetLogo to evaluate Complete Streets policies in Philadelphia. Analyzed 40 datasets with Python and pandas for transportation performance and return on investment, and presented findings at Penn research and climate events.
@@ -105,7 +105,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Published Senior Thesis: Impact of Rideshare Platforms on Social Hierarchies in Bengaluru (`thesis`)
 
-- Categories: Research, Community
+- Categories: Research
 - Role/context: Published senior thesis · Penn Urban Studies
 - Summary: Investigating how rideshare platforms shape transportation inequality, driver labor, and everyday life in Bengaluru.
 - Evidence: Selected through a highly competitive research grant process, I received a $3,500 Hassenfeld Grant. I conducted fieldwork with drivers, riders, and experts and analyzed interviews using NVivo. The thesis examines class differences in transportation, congestion, and labor precarity. The full paper and presentation are available below.
@@ -118,7 +118,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Redesigning an Employee Portal (`energy`)
 
-- Categories: Software
+- Categories: Software & Data
 - Role/context: Frontend software engineer intern · Siemens Energy · 2024
 - Summary: Contributing to a team redesign of Siemens Energy’s employee time entry and HR portal.
 - Contribution confirmed by owner: Worked collaboratively with a team on frontend development for the portal redesign.
@@ -129,7 +129,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### London Disconnected (`broadband`)
 
-- Categories: Data, Research
+- Categories: Software & Data, Research
 - Role/context: GIS course project · University College London · 2024
 - Summary: Mapping the relationship between broadband access and deprivation to examine who benefits from digital infrastructure.
 - Evidence: Used spatial analysis to investigate broadband access, usage, and socioeconomic deprivation across London. The research found that broadband speed aligned more strongly with income levels than actual usage.
@@ -139,7 +139,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Runger (`runger`)
 
-- Categories: Software
+- Categories: Software & Data
 - Role/context: Course project · iOS development
 - Summary: A social running app for tracking outdoor runs and sharing them with other users.
 - Evidence: Developed an iOS platform using location tracking and Apple HealthKit to record run locations and distances, with social features for posting about runs.
@@ -152,7 +152,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Leading Penn Thillana’s Performance at Carnegie Hall (`thillana`)
 
-- Categories: Creative, Community
+- Categories: Art
 - Role/context: Captain & former marketing chair · Penn Thillana
 - Summary: Leading choreography, soundtrack development, and rehearsals to bring Penn Thillana’s performance to Carnegie Hall.
 - Evidence: Led a 25-person dance team, choreographed performances, developed soundtracks, and organized rehearsals. As one of three captains in 2025, I helped lead the preparation and delivery of an 18-dancer performance at Carnegie Hall. Also created promotional materials, branding, and merchandise as marketing chair.
@@ -163,7 +163,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Film Production & Ethnographic Research in Uganda (`documentary`)
 
-- Categories: Creative, Research
+- Categories: Art, Research
 - Role/context: Sound production · Penn Global Documentary Institute · 2024
 - Summary: Fully funded travel to Uganda and South Africa, contributing sound production to two documentary films.
 - Contribution confirmed by owner: Worked on the teams for Days Between Rest and The Cave Synagogue, helping with sound production; travel to Uganda and South Africa was fully funded.
@@ -178,7 +178,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Film Culture Program Manager (`film-culture`)
 
-- Categories: Creative, Community
+- Categories: Art
 - Role/context: Teaching assistant · Penn Film Culture Program
 - Summary: Creating a film series around displacement and making space for conversation after each screening.
 - Evidence: Curated 15 films around a self-created theme of displacement, facilitated weekly screenings and discussion for a class of 80 students, and managed attendance.
@@ -191,7 +191,7 @@ Only add files you want included with the public website. Draft/private source f
 
 - Image: `assets/projects/penn-abroad/semester-abroad.jpg` — owner-supplied photograph in London; displayed on work board.
 
-- Categories: Creative, Community
+- Categories: Art
 - Role/context: Global correspondent · Penn Abroad
 - Summary: Encouraging fellow students to study abroad through original content and conversations about life overseas.
 - Contribution confirmed by owner: Created original social media content, blog posts, and day-in-the-life videos for Penn Abroad; spoke at two send-off student panels.
@@ -203,7 +203,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Internship at E-Consult Solutions (`econsult`)
 
-- Categories: Research, Data
+- Categories: Research, Software & Data
 - Role/context: Fieldwork internship · URBS 3000 seminar
 - Summary: Fieldwork for URBS 3000 at E-Consult Solutions, contributing research on urban development, transportation, and economic disparities.
 - Evidence: Researched office-to-residential conversion, SEPTA service changes, and spending patterns. Used Excel to visualize racial disparities in bank lending in Philadelphia for a client deliverable.
@@ -214,7 +214,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### HR Technology Transformation & Change Management (`pwc`)
 
-- Categories: Software
+- Categories: Software & Data
 - Role/context: Technology consulting intern · PwC · 2025
 - Summary: Supporting an SAP SuccessFactors implementation through HR change management, PMO tools, and coordination across teams.
 - Evidence: I contributed to an SAP SuccessFactors implementation for a media client, supporting the transition to a new HR platform. My project management office (PMO) work included preparing executive status updates and action trackers, tracking delivery, and coordinating deliverables across teams. I also arranged translated meetings for Japanese and English speakers.
@@ -225,7 +225,7 @@ Only add files you want included with the public website. Draft/private source f
 
 ### Karen Refugees & Community Gardens (`gardens`)
 
-- Categories: Research, Community
+- Categories: Research
 - Role/context: Qualitative research · Philadelphia
 - Summary: Exploring the role of community gardens in the lives of Karen refugees in Philadelphia through qualitative interviews.
 - Evidence: Used qualitative interviews with community members to understand the role of gardens in community life.
@@ -287,3 +287,9 @@ Category changes remain under discussion. Photography and Urban Studies design c
 - Graduation photography: Owner reports extensive graduation portrait work; portfolio at https://www.instagram.com/deesigned123/. Cover portrait supplied and added. Profile contents have not been reviewed.
 - Penn Urban Studies communications assistant: Owner created department hoodies, brochures, and Instagram flyers. Work card added with supplied hoodie image and Instagram sample.
 - Design & Art could begin as a Work filter and become a dedicated gallery page when visual material is available.
+
+## October 6 navigation update
+
+- Explore Projects opens Work directly.
+- Active filters: Software & Data, Research, Art; replaces the earlier proposed four-category organization.
+- Traffic modeling, NYC FHV, London broadband, and E-Consult appear in Software & Data and Research. Uganda documentary work appears in Research and Art.

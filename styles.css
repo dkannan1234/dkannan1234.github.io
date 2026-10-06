@@ -744,8 +744,8 @@ p:last-child {
 
 /* Keep the complete NutriMap slide visible at every card width. */
 .nutrimap-image { display: block; width: 100%; height: auto; }
-.featured-grid .work-card:has(> img) { display: flex; flex-direction: column; }
-.featured-grid .work-card:has(> img) .work-card-body { height: auto; flex: 1; }
+.featured-grid .work-card { display: flex; flex-direction: column; min-width: 0; }
+.featured-grid .work-card .work-card-body { height: auto; flex: 1; }
 
 /* Preserve the full project map and study abroad photograph. */
 .project-photo { display: block; width: 100%; height: auto; }

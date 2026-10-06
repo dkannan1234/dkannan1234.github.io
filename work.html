@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="board.css">
-  <script src="board.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=cc1fc5e7da">
+  <link rel="stylesheet" href="board.css?v=afcc39fd11">
+  <script src="board.js?v=bb4cd83f57" defer></script>
 </head>
 <body class="board-page">
   <span class="sparkle" aria-hidden="true">✦</span><span class="sparkle" aria-hidden="true">♡</span>
@@ -20,25 +20,20 @@
     <div class="board-intro">
       <span class="tag">Software. Research. Art.</span>
       <h1>What I’ve Been <em>Working On.</em></h1>
-      <p>I build software and study how technology shapes people's lives—grounded in research, community, and creative practice.</p>
-      <p class="board-note">A collection of things I've built, questions I've explored, and people I've brought together.</p>
     </div>
     <div class="board-controls" hidden>
       <div class="board-filters" role="group" aria-label="Filter experiences">
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
-        <button type="button" data-filter="software" aria-pressed="false">Software</button>
-        <button type="button" data-filter="data" aria-pressed="false">Data</button>
+        <button type="button" data-filter="software" aria-pressed="true">Software &amp; Data</button>
         <button type="button" data-filter="research" aria-pressed="false">Research</button>
-        <button type="button" data-filter="community" aria-pressed="false">Community</button>
-        <button type="button" data-filter="creative" aria-pressed="false">Creative</button>
+        <button type="button" data-filter="art" aria-pressed="false">Art</button>
       </div>
       <p id="board-count" role="status" aria-live="polite" aria-atomic="true"></p>
     </div>
     <div class="experience-board">
-      <article class="experience-card" id="thesis" data-tags="research community">
+      <article class="experience-card" id="thesis" data-tags="research">
         <img class="experience-image" src="assets/thesis-cover.jpg" alt="Cover of the Nobody Moves rideshare thesis" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Research</li><li>Community</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Research</li></ul>
           <h2>Published Senior Thesis: Impact of Rideshare Platforms on Social Hierarchies in Bengaluru</h2>
           <p class="experience-role">Published research · Penn Urban Studies</p>
           <p>Investigating how rideshare platforms shape social hierarchies, transportation inequality, and driver labor in Bengaluru. Published in the Spring 2026 Barnard-Columbia Urban Review, page 53.</p>
@@ -48,57 +43,57 @@
       <article class="experience-card" id="pwc" data-tags="software">
         <img class="experience-image experience-logo" src="assets/projects/pwc/logo.png" alt="PwC logo" width="638" height="480" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Software</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li></ul>
           <h2>HR Technology Transformation &amp; Change Management</h2>
           <p class="experience-role">Technology consulting intern · PwC · 2025</p>
           <p>Supporting an SAP SuccessFactors implementation through HR change management, PMO tools, and coordination across teams.</p>
           <details><summary>Read the story<span class="sr-only">: HR Technology Transformation &amp; Change Management</span></summary><div class="experience-detail"><p>I contributed to an SAP SuccessFactors implementation for a media client, supporting the transition to a new HR platform. My project management office (PMO) work included preparing executive status updates and action trackers, tracking delivery, and coordinating deliverables across teams. I also arranged translated meetings for Japanese and English speakers.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>SAP SuccessFactors · Jira · Excel · SharePoint · PMO tools · Change management</p></div></details>
         </div>
       </article>
-      <article class="experience-card" id="gethomesafe" data-tags="software community">
+      <article class="experience-card" id="gethomesafe" data-tags="software">
         <img class="experience-image" src="assets/ghs.png" alt="GetHomeSafe project screenshot" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Software</li><li>Community</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li></ul>
           <h2>GetHomeSafe</h2>
           <p class="experience-role">Programmer · Human Computer Interaction</p>
           <p>A platform that helps women find someone to walk home with, connecting interface design with everyday safety.</p>
           <details><summary>Read the story<span class="sr-only">: GetHomeSafe</span></summary><div class="experience-detail"><p>Collaborating with two classmates, I implemented the Google Maps API integration and a matching algorithm for live pairing. The team prototyped the experience in Figma.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Google Maps API · Figma</p><div class="experience-links"><a href="https://www.youtube.com/watch?v=xEIEMdesdaM">Watch demo <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="nutrimap" data-tags="software data">
+      <article class="experience-card" id="nutrimap" data-tags="software">
         <img class="nutrimap-image" src="assets/projects/nutrimap/pitch-deck-cover.png" alt="NutriMap CIS 4500 pitch deck cover with an illustrated bag of vegetables" width="2222" height="1242" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Software</li><li>Data</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li></ul>
           <h2>NutriMap</h2>
           <p class="experience-role">CIS 4500 · Team course project</p>
           <p>Explore the nutritional landscape of US restaurants through interactive maps, cuisine comparisons, and nutrition filters.</p>
           <details><summary>Read the story<span class="sr-only">: NutriMap</span></summary><div class="experience-detail"><p>Built on the Yelp Open Dataset and Food.com recipe dataset. The dashboard includes restaurant details, macro comparisons, healthy picks, and neighborhood-level trends.</p><p><strong>Database design &amp; organization:</strong> I organized a large dataset and created an entity relationship diagram (ERD) to document its structure and the relationships between entities.</p><p><strong>Queries &amp; mapping:</strong> I wrote complex queries integrating data from multiple sources and built map capabilities for exploring restaurant nutrition.</p><p><strong>Team collaboration:</strong> I worked collaboratively with my classmates using Git to manage our shared code. We also created a pitch deck presenting NutriMap, linked below alongside the project demo.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>React · Node.js · PostgreSQL · Git · Data modeling (ERD)</p><div class="experience-links"><a href="https://docs.google.com/presentation/d/1sGXIgZwj0shJgk6W38GQvafb9GZ35UtCBjYtkrmSDKg/edit?usp=sharing">View pitch deck <span aria-hidden="true">↗</span></a><a href="https://drive.google.com/file/d/1BtelajqQlxU0rC_0_9lnxmng33rIC5I5/view?usp=sharing">Watch demo <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="nyc-fhv" data-tags="data research">
+      <article class="experience-card" id="nyc-fhv" data-tags="software research">
         <img class="project-photo" src="assets/projects/nyc-fhv/dropoff-map.png" alt="NYC map showing for-hire vehicle dropoff counts by zone" width="1758" height="1046" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Data</li><li>Research</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li><li>Research</li></ul>
           <h2>For Hire Vehicles in NYC Big Data Analysis</h2>
           <p class="experience-role">Course project · Big Data Analytics</p>
           <p>Analyzing NYC ride-hailing patterns and driver pay to understand how transportation systems serve people.</p>
           <details><summary>Read the story<span class="sr-only">: For Hire Vehicles in NYC Big Data Analysis</span></summary><div class="experience-detail"><p>Analyzed more than 5 million Uber and Lyft trips using Python and SQL. The presentation examines 2021 data, airport pickup patterns, and driver-pay prediction using linear regression, ridge regression, and XGBoost. Limitations include pandemic-era data and the distinction between driver pay and profit.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Python · SQL · Folium · Google Colab · XGBoost</p><div class="experience-links"><a href="https://colab.research.google.com/drive/18AD7nja9C9ktwmwYK44cZjdqXJo0qEjz?usp=sharing">Open Colab notebook <span aria-hidden="true">↗</span></a><a href="assets/projects/nyc-fhv/presentation.pdf">View presentation (PDF) <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="coderchicks" data-tags="community software">
+      <article class="experience-card" id="coderchicks" data-tags="software">
         <img class="project-photo" src="assets/projects/coderchicks/workshop.jpg" alt="CoderChicks workshop participants learning together at desktop computers" width="2576" height="1714" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Community</li><li>Software</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li></ul>
           <h2>CoderChicks</h2>
           <p class="experience-role">Founder · 2018–2022</p>
           <p>Making computer science education more accessible through free workshops and an original Python game-design curriculum.</p>
           <details><summary>Read the story<span class="sr-only">: CoderChicks</span></summary><div class="experience-detail"><p>Founded a nonprofit serving more than 450 girls in low-income communities through 25+ coding workshops. Led more than 50 volunteers and worked with local businesses to raise over $10,000 for workshops. Introduced a Python game-design curriculum at Sanford Middle School.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Python · Curriculum design · Volunteer leadership</p><div class="experience-links"><a href="https://coderchicks.wixsite.com/oursite/about">Visit the CoderChicks website <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/coderchicks/">CoderChicks on Instagram <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="complete-streets" data-tags="software data research">
+      <article class="experience-card" id="complete-streets" data-tags="software research">
         <a href="assets/projects/complete-streets/traffic-simulation.png" aria-label="View full traffic simulation screenshot"><img class="project-photo" src="assets/projects/complete-streets/traffic-simulation.png" alt="NetLogo traffic simulation with car speed graphs, travel time and cost estimates, and a simulated lane of cars" width="2056" height="688" loading="lazy"></a>
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Software</li><li>Data</li><li>Research</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li><li>Research</li></ul>
           <h2>Traffic Modeling of Complete Streets Design</h2>
           <p class="experience-role">Researcher · Wharton Climate Decisions Lab</p>
           <p>Simulating how street design affects buses, cars, cyclists, and pedestrians—and evaluating the policy tradeoffs.</p>
@@ -108,17 +103,17 @@
       <article class="experience-card" id="energy" data-tags="software">
         <img class="experience-image experience-logo" src="assets/projects/siemens-energy/logo.png" alt="Siemens Energy logo" width="4320" height="2430" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Software</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li></ul>
           <h2>Redesigning an Employee Portal</h2>
           <p class="experience-role">Frontend software engineer intern · Siemens Energy · 2024</p>
           <p>Contributing to a team redesign of Siemens Energy’s employee time entry and HR portal.</p>
           <details><summary>Read the story<span class="sr-only">: Redesigning an Employee Portal</span></summary><div class="experience-detail"><p>As a frontend software engineer intern, I worked collaboratively with a team to help redesign the interface for Siemens Energy’s time entry and HR portal. My contribution focused on frontend development for the employee-facing portal.</p><p class="experience-tools"><strong>Focus &amp; methods</strong><br>Frontend development · Interface redesign · Team collaboration</p></div></details>
         </div>
       </article>
-      <article class="experience-card" id="broadband" data-tags="data research">
+      <article class="experience-card" id="broadband" data-tags="software research">
         <img class="experience-image" src="assets/broadband.png" alt="London broadband access project visualization" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Data</li><li>Research</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li><li>Research</li></ul>
           <h2>London Disconnected</h2>
           <p class="experience-role">GIS course project · University College London · 2024</p>
           <p>Mapping the relationship between broadband access and deprivation to examine who benefits from digital infrastructure.</p>
@@ -128,27 +123,27 @@
       <article class="experience-card" id="runger" data-tags="software">
         <figure class="runger-preview"><a href="assets/projects/runger/run-screen.png" aria-label="View full Runger screenshot"><img src="assets/projects/runger/run-screen.png" alt="Runger simulated-run screen with a Central Park map, route, speed, distance, timer, and Start button" width="726" height="1504" loading="lazy"></a><figcaption>Simulated run · app preview</figcaption></figure>
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Software</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Software &amp; Data</li></ul>
           <h2>Runger</h2>
           <p class="experience-role">Course project · iOS development</p>
           <p>A social running app for tracking outdoor runs and sharing them with other users.</p>
           <details><summary>Read the story<span class="sr-only">: Runger</span></summary><div class="experience-detail"><p>A team-built iOS running app with location tracking and Apple HealthKit. My contribution focused on persistent data and the views for saving runs and reviewing saved runs.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Swift · iOS · Apple HealthKit · Persistent data</p><div class="experience-links"><a href="https://github.com/kriyip/runger">View source on GitHub <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="thillana" data-tags="creative community">
+      <article class="experience-card" id="thillana" data-tags="art">
         <img class="experience-image" src="assets/carnegie.JPG" alt="Penn Thillana dancers performing at Carnegie Hall" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Art</li></ul>
           <h2>Leading Penn Thillana’s Performance at Carnegie Hall</h2>
           <p class="experience-role">Captain &amp; former marketing chair · Penn Thillana</p>
           <p>Leading choreography, soundtrack development, and rehearsals to bring Penn Thillana’s performance to Carnegie Hall.</p>
           <details><summary>Read the story<span class="sr-only">: Leading Penn Thillana’s Performance at Carnegie Hall</span></summary><div class="experience-detail"><p>Led a 25-person dance team, choreographed performances, developed soundtracks, and organized rehearsals. As one of three captains in 2025, I helped lead the preparation and delivery of an 18-dancer performance at Carnegie Hall. Also created promotional materials, branding, and merchandise as marketing chair.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Choreography · Soundtracks · Visual design · Team leadership</p><div class="experience-links"><a href="https://youtu.be/BNOWYauq6D4">Watch Carnegie Hall Performance <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="documentary" data-tags="creative research">
+      <article class="experience-card" id="documentary" data-tags="art research">
         <img class="project-photo" src="assets/projects/documentary/pgdi-group.jpg" alt="Penn Global Documentary Institute group standing together on a wooden dock beside the water" width="2048" height="1362" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Research</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Art</li><li>Research</li></ul>
           <h2>Film Production &amp; Ethnographic Research in Uganda</h2>
           <p class="experience-role">Sound production · Penn Global Documentary Institute · 2024</p>
           <p>Fully funded travel to Uganda and South Africa with the Penn Global Documentary Institute, contributing sound production to two documentary films.</p>
@@ -164,60 +159,60 @@
           </div></details>
         </div>
       </article>
-      <article class="experience-card" id="urban-studies-design" data-tags="creative community">
+      <article class="experience-card" id="urban-studies-design" data-tags="art">
         <a href="assets/projects/urban-studies-design/hoodie-design.jpg" aria-label="View full image: Design for Penn Urban Studies"><img class="project-photo" src="assets/projects/urban-studies-design/hoodie-design.jpg" alt="Front and back of a cream Penn Urban Studies hoodie with green lettering and urban illustrations" width="2188" height="1878" loading="lazy"></a>
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Art</li></ul>
           <h2>Design for Penn Urban Studies</h2>
           <p class="experience-role">Communications assistant · Penn Urban Studies</p>
           <p>Designing department hoodies, brochures, and Instagram flyers for the Urban Studies community.</p>
           <details><summary>Read the story<span class="sr-only">: Design for Penn Urban Studies</span></summary><div class="experience-detail"><p>As a communications assistant for Penn’s Urban Studies department, I created visual materials across apparel, print, and social media. My work included hoodies for the major, department brochures, and Instagram flyers. The hoodie design and linked social media sample show examples of this work.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Visual design · Print design · Apparel design · Social media</p><div class="experience-links"><a href="https://www.instagram.com/p/DUTSGBtji2q/">View Sample Work on Instagram <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="photography" data-tags="creative">
+      <article class="experience-card" id="photography" data-tags="art">
         <a href="assets/projects/photography/graduation-portrait.jpeg" aria-label="View full image: Photography Freelancing"><img class="project-photo" src="assets/projects/photography/graduation-portrait.jpeg" alt="Five graduates in gowns seated among library bookshelves holding books" width="1206" height="1592" loading="lazy"></a>
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Creative</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Art</li></ul>
           <h2>Photography Freelancing</h2>
           <p class="experience-role">Photographer · deesigned123</p>
           <p>Graduation portraits celebrating students and the friendships they built along the way.</p>
           <details><summary>Read the story<span class="sr-only">: Photography Freelancing</span></summary><div class="experience-detail"><p>I photograph graduation shoots, creating individual and group portraits to mark the end of students’ time at university. This library portrait is a sample of my work; more photographs are available on my photography Instagram.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Portrait photography · Group photography · Composition</p><div class="experience-links"><a href="https://www.instagram.com/deesigned123/">Explore More Photography on Instagram <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="film-culture" data-tags="creative community">
+      <article class="experience-card" id="film-culture" data-tags="art">
         <img class="experience-image experience-logo" src="assets/projects/film-culture/logo.png" alt="Film Culture Program, Gregory College House logo" width="659" height="494" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Art</li></ul>
           <h2>Film Culture Program Manager</h2>
           <p class="experience-role">Teaching assistant · Penn Film Culture Program</p>
           <p>Creating a film series around displacement and making space for conversation after each screening.</p>
           <details><summary>Read the story<span class="sr-only">: Film Culture Program Manager</span></summary><div class="experience-detail"><p>Curated 15 films around a self-created theme of displacement, facilitated weekly screenings and discussion for a class of 80 students, and managed attendance.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Film curation · Discussion facilitation · Teaching</p></div></details>
         </div>
       </article>
-      <article class="experience-card" id="penn-abroad" data-tags="creative community">
+      <article class="experience-card" id="penn-abroad" data-tags="art">
         <img class="project-photo" src="assets/projects/penn-abroad/semester-abroad.jpg" alt="Deepika in front of Buckingham Palace during her semester abroad in London" width="1190" height="1200" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Creative</li><li>Community</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Art</li></ul>
           <h2>Study Abroad Global Correspondant</h2>
           <p class="experience-role">Global correspondent · Penn Abroad</p>
           <p>Encouraging fellow students to study abroad through original content and conversations about life overseas.</p>
           <details><summary>Read the story<span class="sr-only">: Study Abroad Global Correspondant</span></summary><div class="experience-detail"><p>As a Penn Abroad Global Correspondent, I created original social media content, blog posts, and day-in-the-life videos to encourage fellow students to study abroad. Drawing on my semester at University College London, I shared a personal view of life and learning overseas.</p><p>I also spoke at two send-off student panels, sharing my study abroad experience with students preparing for their own time abroad.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Social media content · Blog writing · Video storytelling · Public speaking</p><div class="experience-links"><a href="https://global.upenn.edu/pennabroad/whats-next-after-study-abroad/">Read my blog: What’s next after Study Abroad? <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/reel/DBeKUfFqz-0/">Watch my Penn Abroad Instagram reel <span aria-hidden="true">↗</span></a></div></div></details>
         </div>
       </article>
-      <article class="experience-card" id="econsult" data-tags="research data">
+      <article class="experience-card" id="econsult" data-tags="research software">
         <img class="experience-image experience-logo" src="assets/projects/econsult/esi-logo.jpeg" alt="ESI Econsult Solutions Inc. logo" width="738" height="246" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Research</li><li>Data</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Research</li><li>Software &amp; Data</li></ul>
           <h2>Internship at E-Consult Solutions</h2>
           <p class="experience-role">Fieldwork internship · URBS 3000 seminar</p>
           <p>Fieldwork for my URBS 3000 seminar, contributing research on urban development, transportation, and economic disparities at E-Consult Solutions.</p>
           <details><summary>Read the story<span class="sr-only">: Internship at E-Consult Solutions</span></summary><div class="experience-detail"><p>As part of my URBS 3000 seminar fieldwork, I contributed research on office-to-residential conversions, SEPTA service changes, and spending patterns. I also used Excel to visualize racial disparities in bank lending in Philadelphia for a client deliverable.</p><p class="experience-tools"><strong>Tools &amp; methods</strong><br>Excel · Economic research · Data visualization</p></div></details>
         </div>
       </article>
-      <article class="experience-card" id="gardens" data-tags="research community">
+      <article class="experience-card" id="gardens" data-tags="research">
         <img class="project-photo" src="assets/projects/community-gardens/garden.jpeg" alt="Community garden with planting beds and the Philadelphia skyline in the background" width="547" height="365" loading="lazy">
         <div class="experience-body">
-          <ul class="experience-tags" aria-label="Categories"><li>Research</li><li>Community</li></ul>
+          <ul class="experience-tags" aria-label="Categories"><li>Research</li></ul>
           <h2>Karen Refugees &amp; Community Gardens</h2>
           <p class="experience-role">Qualitative research · Philadelphia</p>
           <p>Exploring the role of community gardens in the lives of Karen refugees in Philadelphia through qualitative interviews.</p>
